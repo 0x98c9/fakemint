@@ -1,0 +1,86 @@
+import Link from "next/link";
+
+export default function TermsPage() {
+  return (
+    <div className="max-w-2xl mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
+      <p className="text-sm text-gray-500 mb-6">Last Updated: June 15, 2024</p>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Acceptance of Terms</h2>
+        <p className="mb-4">By accessing or using the Fake Data Generator service ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, you may not access the Service.</p>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Description of Service</h2>
+        <p className="mb-4">Fake Data Generator is a tool designed to help users generate synthetic data for development, testing, and educational purposes. The Service processes all data locally in your browser and does not transmit your data to our servers.</p>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Use of the Service</h2>
+        <p className="mb-4">You agree to use the Service and any data generated through it in compliance with all applicable laws, regulations, and these Terms. Specifically, you agree:</p>
+        <ul className="list-disc pl-6 space-y-2 mb-4">
+          <li>Not to use generated data to impersonate real individuals or entities</li>
+          <li>Not to use generated data for fraudulent purposes</li>
+          <li>Not to use generated data in ways that could reasonably mislead others to believe it represents real individuals or entities</li>
+          <li>Not to use the Service to generate data that is defamatory, obscene, or otherwise objectionable</li>
+          <li>Not to attempt to reverse-engineer, decompile, or otherwise attempt to derive the source code of the Service</li>
+          <li>Not to use automated means to access or use the Service in a manner that sends more requests to our servers than a human could reasonably produce in the same period</li>
+        </ul>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Intellectual Property</h2>
+        <p className="mb-4">The Service, including its original content, features, and functionality, is owned by us and is protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+        <p className="mb-4">The data you generate using our Service belongs to you. You are free to use it according to these Terms.</p>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Open Source</h2>
+        <p className="mb-4">Portions of the Service may incorporate open-source software. Any use, reproduction, and distribution of such open-source components are governed by the terms of the applicable open-source license.</p>
+        <p className="mb-4">The source code for the Service is available on <a href="https://github.com/0x98c9/fakemint" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">GitHub</a> and is subject to the license terms specified in that repository.</p>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Disclaimer of Warranties</h2>
+        <p className="mb-4">The Service is provided on an "AS IS" and "AS AVAILABLE" basis, without any warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+        <p className="mb-4">We do not warrant that:</p>
+        <ul className="list-disc pl-6 space-y-2 mb-4">
+          <li>The Service will function uninterrupted, secure, or available at any particular time or location</li>
+          <li>Any errors or defects will be corrected</li>
+          <li>The Service is free of viruses or other harmful components</li>
+          <li>The results of using the Service will meet your requirements</li>
+        </ul>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Limitation of Liability</h2>
+        <p className="mb-4">In no event shall we be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
+        <ul className="list-disc pl-6 space-y-2 mb-4">
+          <li>Your access to or use of or inability to access or use the Service</li>
+          <li>Any conduct or content of any third party on the Service</li>
+          <li>Any content obtained from the Service</li>
+          <li>Unauthorized access, use, or alteration of your transmissions or content</li>
+          <li>The use of data generated by the Service</li>
+        </ul>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Changes to Terms</h2>
+        <p className="mb-4">We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+        <p className="mb-4">By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Service.</p>
+      </section>
+      
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3">Governing Law</h2>
+        <p className="mb-4">These Terms shall be governed and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.</p>
+        <p className="mb-4">Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
+      </section>
+      
+      <section>
+        <h2 className="text-2xl font-semibold mb-3">Contact Us</h2>
+        <p className="mb-4">If you have any questions about these Terms, please <Link href="/about" className="text-blue-600 underline">contact us</Link>.</p>
+      </section>
+    </div>
+  );
+}
