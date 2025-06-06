@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -8,7 +8,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { useState } from "react"
 import { usePathname } from "next/navigation"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -27,7 +26,17 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname()
   const [isConfigOpen, setIsConfigOpen] = useState(true)
-  
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   // Only pass the config toggle props on the home page
   const isHomePage = pathname === "/"
   
@@ -60,16 +69,31 @@ export default function RootLayout({
         <title>FakeMint &mdash; Generate Realistic Fake Data Instantly</title>
       </head>
       <body className={inter.className} suppressHydrationWarning>
-        <div className="absolute top-0 left-0 w-full z-50 bg-primary text-primary-foreground text-center py-2 font-bold text-lg shadow">
-          FakeMint <span className="font-normal text-base ml-2">&mdash; Generate Realistic Fake Data Instantly</span>
-        </div>
+        {isMobile && (
+          <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background/95 backdrop-blur-lg">
+            <div className="max-w-sm w-full bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8 flex flex-col items-center gap-4 border border-primary">
+              <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-primary mb-2"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" /></svg>
+              <h2 className="text-xl font-bold text-center">Desktop Only</h2>
+              <p className="text-center text-muted-foreground">This website is not available on mobile or tablet devices. Please use a desktop or laptop for the best experience.</p>
+            </div>
+          </div>
+        )}
         <ThemeProvider defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex flex-col min-h-screen pt-10">
-            <Header 
+          <div
+            className={
+              "flex flex-col min-h-screen w-full" +
+              (isMobile ? " pointer-events-none select-none blur-sm" : "")
+            }
+            aria-hidden={isMobile}
+          >
+            <Header
               onToggleConfig={isHomePage ? () => setIsConfigOpen(!isConfigOpen) : undefined}
               isConfigOpen={isHomePage ? isConfigOpen : undefined}
             />
-            <main className="flex-1">
+            <main className={
+              "flex-1 w-full px-0 sm:px-2 md:px-0" +
+              (isMobile ? "" : " pt-10")
+            }>
               {isHomePage ? (
                 React.cloneElement(children as React.ReactElement<{ isConfigOpen?: boolean }>, { isConfigOpen })
               ) : (
