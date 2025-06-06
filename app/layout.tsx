@@ -56,10 +56,15 @@ export default function RootLayout({
         <meta name="twitter:title" content="FakeMint" />
         <meta name="twitter:description" content="Generate realistic fake data for development, testing, and design" />
         <meta name="twitter:image" content="/og-image.png" />
+        {/* Website Name and Tagline */}
+        <title>FakeMint &mdash; Generate Realistic Fake Data Instantly</title>
       </head>
       <body className={inter.className} suppressHydrationWarning>
+        <div className="absolute top-0 left-0 w-full z-50 bg-primary text-primary-foreground text-center py-2 font-bold text-lg shadow">
+          FakeMint <span className="font-normal text-base ml-2">&mdash; Generate Realistic Fake Data Instantly</span>
+        </div>
         <ThemeProvider defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen pt-10">
             <Header 
               onToggleConfig={isHomePage ? () => setIsConfigOpen(!isConfigOpen) : undefined}
               isConfigOpen={isHomePage ? isConfigOpen : undefined}
